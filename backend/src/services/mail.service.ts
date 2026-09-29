@@ -1,4 +1,4 @@
-﻿import nodemailer, { type Transporter } from "nodemailer";
+import nodemailer, { type Transporter } from "nodemailer";
 import { env } from "../config/env.js";
 
 let transporter: Transporter | null = null;
@@ -46,5 +46,6 @@ export async function sendCapsuleOpenedEmail(mail: CapsuleOpenedMail): Promise<v
 }
 
 function escapeHtml(s: string): string {
-  return s.replace(/[&<>"'"'"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"'"'"': "&quot;", "'"'"'": "&#39;" }[c] ?? c));
+  const map: Record<string, string> = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
+  return s.replace(/[&<>"']/g, (c) => map[c] ?? c);
 }

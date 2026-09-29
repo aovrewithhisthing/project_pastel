@@ -50,6 +50,7 @@ export interface UnlockedCapsuleResponse {
     createdAt: Date;
     updatedAt: Date;
   };
+}
 
 export async function createCapsule(userId: string, input: CreateCapsuleInput) {
   if (input.openAt.getTime() <= Date.now()) {
