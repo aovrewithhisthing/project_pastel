@@ -1,6 +1,8 @@
 ﻿import { z } from "zod";
 import { prisma } from "../config/prisma.js";
 import { AppError } from "../middlewares/errorHandler.js";
+import { createDownloadUrl } from "./s3.service.js";
+import { scheduleCapsuleNotification } from "../queues/capsuleNotification.queue.js";
 
 /** Body validator for POST /api/capsules */
 export const createCapsuleSchema = z.object({
@@ -11,7 +13,7 @@ export const createCapsuleSchema = z.object({
 
 export type CreateCapsuleInput = z.infer<typeof createCapsuleSchema>;
 
-/** Locked envelope: metadata only — contentText & attachments MUST NOT appear here. */
+/** Locked envelope: metadata only — contentText/attachments/URLs MUST NOT appear. */
 export interface LockedCapsuleResponse {
   locked: true;
   capsule: {
@@ -25,7 +27,7 @@ export interface LockedCapsuleResponse {
   };
 }
 
-/** Unlocked envelope: full payload including contentText + attachments. */
+/** Unlocked envelope: contentText + attachments (masing-masing dengan downloadUrl singkat). */
 export interface UnlockedCapsuleResponse {
   locked: false;
   capsule: {
@@ -37,10 +39,11 @@ export interface UnlockedCapsuleResponse {
     locked: false;
     attachments: Array<{
       id: string;
-      fileKey: string;
       fileName: string;
       fileType: string;
       fileSize: number;
+      downloadUrl: string;
+      downloadUrlExpiresIn: number;
       createdAt: Date;
     }>;
     createdAt: Date;
@@ -52,7 +55,7 @@ export async function createCapsule(userId: string, input: CreateCapsuleInput) {
   if (input.openAt.getTime() <= Date.now()) {
     throw new AppError("openAt must be a future date", 422);
   }
-  return prisma.capsule.create({
+  const capsule = await prisma.capsule.create({
     data: {
       userId,
       title: input.title,
@@ -62,13 +65,19 @@ export async function createCapsule(userId: string, input: CreateCapsuleInput) {
     },
     select: { id: true, title: true, openAt: true, status: true, createdAt: true },
   });
+
+  // Jadwalkan job notifikasi pembukaan: delay = openAt - now (best-effort, non-blokir).
+  try {
+    await scheduleCapsuleNotification(capsule.id, userId, capsule.openAt);
+  } catch (e) {
+    // Redis down tidak boleh menggagalkan pembuatan kapsul.
+    console.error("[queue] failed to schedule notification:", (e as Error).message);
+  }
+
+  return capsule;
 }
 
-/**
- * List own capsules — metadata ONLY.
- * The Prisma `select` deliberately omits `contentText` so a locked
- * capsule body can never leak through this endpoint.
- */
+/** List own capsules — metadata ONLY (select tanpa contentText). */
 export async function listCapsules(userId: string) {
   const rows = await prisma.capsule.findMany({
     where: { userId },
@@ -98,9 +107,9 @@ export async function listCapsules(userId: string) {
 
 /**
  * CRITICAL: server-side time-lock + IDOR guard.
- * - Query is ALWAYS scoped `WHERE id AND userId` (non-owner => 404).
- * - If `new Date() < capsule.openAt` => metadata only (locked: true).
- * - Else flip status to UNLOCKED (if needed) and return full payload.
+ * - Query SELALU `WHERE id AND userId` (non-owner => 404).
+ * - `now < openAt` => metadata only. URL download S3 TIDAK BOLEH digenerate.
+ * - Else flip UNLOCKED + bouat presigned GET singkat per attachment.
  */
 export async function getCapsuleById(
   capsuleId: string,
@@ -112,9 +121,8 @@ export async function getCapsuleById(
   });
   if (!capsule) throw new AppError("Capsule not found", 404);
 
-  const now = new Date();
-  if (now < capsule.openAt) {
-    // DILARANG KERAS: never include contentText / attachments below.
+  if (new Date() < capsule.openAt) {
+    // DILARANG KERAS: tanpa contentText / attachments / downloadUrl.
     return {
       locked: true,
       capsule: {
@@ -141,6 +149,22 @@ export async function getCapsuleById(
     updatedAt = updated.updatedAt;
   }
 
+  // HANYA di cabang unlocked: generate presigned GET per file (TTL singkat).
+  const attachments = await Promise.all(
+    capsule.attachments.map(async (a) => {
+      const { downloadUrl, expiresIn } = await createDownloadUrl(a.fileKey);
+      return {
+        id: a.id,
+        fileName: a.fileName,
+        fileType: a.fileType,
+        fileSize: a.fileSize,
+        downloadUrl,
+        downloadUrlExpiresIn: expiresIn,
+        createdAt: a.createdAt,
+      };
+    }),
+  );
+
   return {
     locked: false,
     capsule: {
@@ -150,14 +174,14 @@ export async function getCapsuleById(
       openAt: capsule.openAt,
       status,
       locked: false,
-      attachments: capsule.attachments,
+      attachments,
       createdAt: capsule.createdAt,
       updatedAt,
     },
   };
 }
 
-/** Owner-only delete. Uses atomic deleteMany(id+userId); 0 rows => 404. */
+/** Owner-only delete atomic (deleteMany id+userId); 0 rows => 404. */
 export async function deleteCapsule(capsuleId: string, currentUserId: string): Promise<void> {
   const result = await prisma.capsule.deleteMany({
     where: { id: capsuleId, userId: currentUserId },
