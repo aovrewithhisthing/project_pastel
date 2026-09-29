@@ -1,8 +1,9 @@
-﻿import { z } from "zod";
+import { z } from "zod";
 import { prisma } from "../config/prisma.js";
 import { AppError } from "../middlewares/errorHandler.js";
 import { createDownloadUrl } from "./s3.service.js";
 import { scheduleCapsuleNotification } from "../queues/capsuleNotification.queue.js";
+import { sanitizeText } from "../utils/sanitize.js";
 
 /** Body validator for POST /api/capsules */
 export const createCapsuleSchema = z.object({
@@ -49,17 +50,19 @@ export interface UnlockedCapsuleResponse {
     createdAt: Date;
     updatedAt: Date;
   };
-}
 
 export async function createCapsule(userId: string, input: CreateCapsuleInput) {
   if (input.openAt.getTime() <= Date.now()) {
     throw new AppError("openAt must be a future date", 422);
   }
+  const cleanTitle = sanitizeText(input.title);
+  const cleanContent = input.contentText ? sanitizeText(input.contentText) : null;
+
   const capsule = await prisma.capsule.create({
     data: {
       userId,
-      title: input.title,
-      contentText: input.contentText ?? null,
+      title: cleanTitle,
+      contentText: cleanContent,
       openAt: input.openAt,
       status: "LOCKED",
     },
