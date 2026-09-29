@@ -62,7 +62,7 @@ export default function Header() {
               onKeyDown={(e) => {
                 if (e.key === "Enter" && q.trim()) window.location.href = `/vault?q=${encodeURIComponent(q)}`;
               }}
-              placeholder="Cari arsip..."
+              placeholder="Cari arsip..." aria-label="Cari arsip"
               className="bg-transparent outline-none text-sm w-32 placeholder:text-[#84746d]/70"
             />
           </div>
