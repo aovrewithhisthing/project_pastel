@@ -3,33 +3,180 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Pastel</title>
+    <meta name="theme-color" content="#f8f6f0" />
+    <title>Ruang Esok — Arsip waktu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header>
-      <h1>Selamat Datang</h1>
-      <nav>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Contact</a>
-      </nav>
-    </header>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Navigasi utama">
+        <div class="brand" aria-label="Ruang Esok">
+          <span class="brand-mark" aria-hidden="true">R</span>
+          <span class="brand-name">ruang esok</span>
+        </div>
 
-    <main>
-      <section>
-        <h2>Judul Halaman</h2>
-        <p>Ini adalah contoh struktur HTML sederhana.</p>
-      </section>
+        <p class="nav-label">Ruang pribadi</p>
+        <nav class="primary-nav" aria-label="Menu utama">
+          <button class="nav-button active" type="button" disabled aria-current="page">
+            <span class="nav-symbol" aria-hidden="true">▤</span>
+            <span>Arsip</span>
+          </button>
+          <button class="nav-button" type="button" disabled>
+            <span class="nav-symbol" aria-hidden="true">＋</span>
+            <span>Kapsul baru</span>
+          </button>
+          <button class="nav-button" type="button" disabled>
+            <span class="nav-symbol" aria-hidden="true">○</span>
+            <span>Profil</span>
+          </button>
+        </nav>
 
-      <section>
-        <h2>Konten Lain</h2>
-        <p>Anda dapat menambahkan lebih banyak elemen di sini.</p>
-      </section>
-    </main>
+        <div class="sidebar-note">Simpan hari ini. Temui dirimu di waktu yang lain.</div>
+        <div class="profile">
+          <div class="avatar" aria-hidden="true">A</div>
+          <div>
+            <div class="profile-name">Alya Prameswari</div>
+            <div class="profile-meta">Pratinjau UI</div>
+          </div>
+        </div>
+      </aside>
 
-    <footer>
-      <p>© 2026 Project Pastel</p>
-    </footer>
+      <main class="main-area">
+        <header class="topbar">
+          <div class="crumb">Ruang pribadi <span aria-hidden="true">/</span> <strong>Arsip</strong></div>
+          <div class="topbar-right">
+            <span class="local-status"><span class="local-dot" aria-hidden="true"></span>Pratinjau</span>
+          </div>
+        </header>
+
+        <div class="content">
+          <aside class="demo-warning" aria-label="Status pratinjau">
+            <span class="warning-mark" aria-hidden="true">i</span>
+            <div><strong>Pratinjau UI/UX.</strong> Ini mockup visual. Tombol, pencarian, dan filter belum aktif. Belum ada akun maupun penyimpanan data.</div>
+          </aside>
+
+          <section aria-labelledby="archive-heading">
+            <div class="page-heading">
+              <div>
+                <p class="eyebrow">Ruang pribadi</p>
+                <h1 id="archive-heading">Arsip waktu</h1>
+                <p class="subheading">Hal-hal yang ingin kamu temui lagi, di waktu yang tepat.</p>
+              </div>
+              <button class="button button-primary" type="button" disabled>
+                <span class="plus" aria-hidden="true">＋</span>
+                Tulis kapsul
+              </button>
+            </div>
+
+            <div class="summary-strip" aria-label="Ringkasan arsip">
+              <div class="summary-item">
+                <div class="summary-value">03</div>
+                <div class="summary-label">Semua kapsul</div>
+              </div>
+              <div class="summary-item">
+                <div class="summary-value">02</div>
+                <div class="summary-label">Menunggu waktu</div>
+              </div>
+              <div class="summary-item">
+                <div class="summary-value">01</div>
+                <div class="summary-label">Sudah tiba waktunya</div>
+              </div>
+            </div>
+
+            <div class="archive-toolbar">
+              <div class="filter-tabs" aria-label="Filter status">
+                <span class="filter-tab active">Semua</span>
+                <span class="filter-tab">Terkunci</span>
+                <span class="filter-tab">Siap dibuka</span>
+                <span class="filter-tab">Sudah dibuka</span>
+              </div>
+              <label class="sr-only" for="archive-search">Cari arsip</label>
+              <input class="search-field" id="archive-search" type="search" placeholder="Cari judul atau tag" disabled />
+            </div>
+
+            <div class="archive-list">
+              <article class="capsule-row">
+                <div class="cover">
+                  <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&amp;fit=crop&amp;w=240&amp;q=80" alt="Jurnal dan catatan" />
+                </div>
+                <div>
+                  <h2 class="capsule-title">Untuk aku, tiga tahun lagi</h2>
+                  <p class="capsule-description">Catatan kecil tentang hidup yang sedang kubangun.</p>
+                  <div class="capsule-meta">
+                    <span>Diri sendiri</span>
+                    <span class="tag">bertumbuh</span>
+                    <span class="tag">harapan</span>
+                  </div>
+                </div>
+                <div class="row-status">
+                  <span class="status locked">Terkunci</span>
+                  <div class="status-date">Buka 29 September 2029</div>
+                </div>
+                <div class="row-date">
+                  <div class="aside-label">Disimpan</div>
+                  <div class="status-date">18 Agustus 2026</div>
+                </div>
+                <div class="row-arrow" aria-hidden="true">›</div>
+              </article>
+
+              <article class="capsule-row">
+                <div class="cover">
+                  <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&amp;fit=crop&amp;w=240&amp;q=80" alt="Pemandangan sore" />
+                </div>
+                <div>
+                  <h2 class="capsule-title">Setelah hari kelulusan</h2>
+                  <p class="capsule-description">Apa pun hasilnya, aku sudah sampai sejauh ini.</p>
+                  <div class="capsule-meta">
+                    <span>Momen penting</span>
+                    <span class="tag">sekolah</span>
+                    <span class="tag">bab-baru</span>
+                  </div>
+                </div>
+                <div class="row-status">
+                  <span class="status locked">Terkunci</span>
+                  <div class="status-date">Buka 27 April 2027</div>
+                </div>
+                <div class="row-date">
+                  <div class="aside-label">Disimpan</div>
+                  <div class="status-date">13 September 2026</div>
+                </div>
+                <div class="row-arrow" aria-hidden="true">›</div>
+              </article>
+
+              <article class="capsule-row">
+                <div class="cover">
+                  <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&amp;fit=crop&amp;w=240&amp;q=80" alt="Catatan untuk hari ini" />
+                </div>
+                <div>
+                  <h2 class="capsule-title">Pesan yang waktunya tiba</h2>
+                  <p class="capsule-description">Sebuah catatan kecil yang sudah menunggu cukup lama.</p>
+                  <div class="capsule-meta">
+                    <span>Momen penting</span>
+                    <span class="tag">hari-ini</span>
+                  </div>
+                </div>
+                <div class="row-status">
+                  <span class="status">Siap dibuka</span>
+                  <div class="status-date">Tiba 28 September 2026</div>
+                </div>
+                <div class="row-date">
+                  <div class="aside-label">Disimpan</div>
+                  <div class="status-date">30 Agustus 2026</div>
+                </div>
+                <div class="row-arrow" aria-hidden="true">›</div>
+              </article>
+            </div>
+
+            <div class="list-caption">
+              <span>Menampilkan 3 dari 3 kapsul</span>
+              <span>Arsip pribadi</span>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
   </body>
 </html>
