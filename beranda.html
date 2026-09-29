@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Chronicle &amp; Seal — Beranda Kapsul Dimsum Digital</title>
+
+  <!-- Typography & Icons -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+
+  <!-- Tailwind CSS Engine for Design System Tokens -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-primary": "#ffffff",
+            "tertiary": "#336668",
+            "on-primary-fixed": "#331202",
+            "inverse-surface": "#31302f",
+            "error-container": "#ffdad6",
+            "on-tertiary-container": "#003739",
+            "tertiary-fixed-dim": "#9cd0d2",
+            "surface-variant": "#e6e2df",
+            "on-secondary-container": "#78520e",
+            "on-primary-container": "#4d2613",
+            "tertiary-container": "#6ea1a3",
+            "secondary-fixed": "#ffddb1",
+            "surface-container-high": "#ece7e5",
+            "on-tertiary-fixed": "#002021",
+            "outline-variant": "#d6c2bb",
+            "surface-dim": "#ddd9d7",
+            "on-error-container": "#93000a",
+            "surface-container": "#f2edeb",
+            "on-error": "#ffffff",
+            "surface": "#fdf8f6",
+            "primary-fixed": "#ffdbcc",
+            "on-tertiary-fixed-variant": "#174e50",
+            "secondary-fixed-dim": "#f2be71",
+            "surface-container-highest": "#e6e2df",
+            "primary-fixed-dim": "#f7b89c",
+            "tertiary-fixed": "#b7ecee",
+            "outline": "#84746d",
+            "primary": "#83533c",
+            "on-primary-fixed-variant": "#673c27",
+            "inverse-on-surface": "#f4f0ee",
+            "on-background": "#1c1b1a",
+            "error": "#ba1a1a",
+            "inverse-primary": "#f7b89c",
+            "primary-container": "#c48b71",
+            "surface-bright": "#fdf8f6",
+            "surface-tint": "#83533c",
+            "on-secondary": "#ffffff",
+            "on-secondary-fixed": "#291800",
+            "surface-container-low": "#f7f3f0",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-fixed-variant": "#614000",
+            "secondary-container": "#fec97b",
+            "on-surface": "#1c1b1a",
+            "background": "#fdf8f6",
+            "secondary": "#7e5713",
+            "on-tertiary": "#ffffff",
+            "on-surface-variant": "#51443e"
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          spacing: {
+            "margin": "2rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2.5rem",
+            "space-lg": "1.5rem",
+            "space-2xl": "4rem",
+            "space-md": "1rem",
+            "gutter": "1.5rem"
+          },
+          fontFamily: {
+            "body-md": ["Plus Jakarta Sans", "sans-serif"],
+            "display-lg-mobile": ["Newsreader", "serif"],
+            "body-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-lg": ["Newsreader", "serif"],
+            "display-lg": ["Newsreader", "serif"],
+            "label-md": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-md": ["Newsreader", "serif"],
+            "body-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "label-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-sm": ["Newsreader", "serif"],
+            "headline-lg-mobile": ["Newsreader", "serif"]
+          },
+          fontSize: {
+            "body-md": ["0.9375rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+            "display-lg-mobile": ["2.25rem", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "body-lg": ["1.125rem", { "lineHeight": "1.7", "fontWeight": "400" }],
+            "headline-lg": ["2.25rem", { "lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "display-lg": ["3.5rem", { "lineHeight": "1.15", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+            "label-md": ["0.875rem", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-md": ["1.5rem", { "lineHeight": "1.35", "fontWeight": "500" }],
+            "body-sm": ["0.8125rem", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "label-sm": ["0.75rem", { "lineHeight": "1.2", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-sm": ["1.25rem", { "lineHeight": "1.4", "fontWeight": "500" }],
+            "headline-lg-mobile": ["1.75rem", { "lineHeight": "1.3", "fontWeight": "400" }]
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg-surface font-body-md text-on-surface antialiased">
+
+  <!-- Top Notification & Screen Navigation Bar (Pratinjau UI/UX Non-Interaktif) -->
+  <aside class="preview-badge-banner" aria-label="Status Mockup Visual">
+    <div class="flex items-center gap-2">
+      <span class="material-symbols-outlined text-[16px]">info</span>
+      <span><strong>Pratinjau Mockup Visual (Non-Interaktif):</strong> Tema Kapsul Dimsum. Seluruh tombol &amp; masukan
+        dibuat statis (tidak dapat dipencet).</span>
+    </div>
+    <nav class="preview-switcher" aria-label="Navigasi Layar Pratinjau">
+      <span class="text-white/70 text-xs hidden sm:inline">Pindah Layar:</span>
+      <a class="preview-pill active" href="beranda.html">Beranda</a>
+      <a class="preview-pill" href="index.html">Vault &amp; Arsip</a>
+      <a class="preview-pill" href="tulis_kapsul.html">Tulis Kapsul</a>
+      <a class="preview-pill" href="buka_kapsul.html">Buka Segel</a>
+    </nav>
+  </aside>
+
+  <!-- Main Top Bar Header -->
+  <header class="sticky top-0 w-full z-50 bg-surface/90 backdrop-blur-md shadow-[0_1px_8px_rgba(26,25,24,0.04)]">
+    <div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-6">
+
+      <!-- Brand Logo -->
+      <div class="flex items-center gap-3.5 flex-shrink-0">
+        <img alt="Digital Time Capsule Wax Seal Logo" class="h-8 w-auto object-contain"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaN2PomknI4AheC78IhTJEKZyZUs6bszhLdcoIp7tgyhaEwEiTodWy4MF7bUZzi0i6ZIMXNh2sNZFLIElMg2pT0PZ8e53gn87Cq0Wc9r-AOjwFWzwUpC7qCy4p-iJKkUTXl6MqpT6L7DpXA82mG_B2V88j9cahs8OjK6lazBfW9K-6ScDo_r9oGiQXFy6HKZVe03DO9toN0EWuD6yFtFnckIeawy2oHOuyQ2Qc6Bvl5AegNQsqRfSu" />
+        <div class="flex flex-col">
+          <span class="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-none">Chronicle &amp;
+            Seal</span>
+          <span class="font-label-sm text-label-sm text-primary tracking-widest uppercase mt-0.5">Kapsul Dimsum
+            Digital</span>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="hidden md:flex items-center gap-1 lg:gap-2">
+        <a class="font-label-md text-label-md bg-primary-container text-on-primary font-medium px-3 py-2 rounded-lg"
+          href="beranda.html" aria-current="page">Beranda</a>
+        <a class="font-label-md text-label-md text-on-surface-variant px-3 py-2 rounded-lg" href="index.html">Vault
+          &amp; Arsip</a>
+        <a class="font-label-md text-label-md text-on-surface-variant px-3 py-2 rounded-lg" href="#">Timeline
+          Kenangan</a>
+        <a class="font-label-md text-label-md text-on-surface-variant px-3 py-2 rounded-lg"
+          href="tulis_kapsul.html">Tulis Kapsul Dimsum</a>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="flex items-center gap-4 flex-shrink-0">
+        <div class="flex items-center gap-1">
+          <button aria-label="Pencarian Arsip" class="p-2 text-on-surface-variant rounded-lg" type="button" disabled>
+            <span class="material-symbols-outlined text-[20px]">search</span>
+          </button>
+          <button aria-label="Pemberitahuan Segel" class="p-2 text-on-surface-variant rounded-lg relative" type="button"
+            disabled>
+            <span class="material-symbols-outlined text-[20px]">notifications</span>
+            <span class="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-primary"></span>
+          </button>
+        </div>
+        <div class="h-6 w-px bg-outline-variant/40 hidden sm:block"></div>
+        <div class="flex items-center gap-3 pl-1">
+          <img alt="Profile" class="w-8 h-8 rounded-full object-cover"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-6Yc7H6yCw81gT_9hh7a5fw7B52pzxcy2PVF0fkftLOKN1JhnzkZqo4RTpKpgFQ8FUhrFf7jddWLuxDb6oWah6kZ03n7s8_pKVq_YnLvaegcaA3vXaxMAHV_gsnefh5_g6rayC1vXoivLf9FH9nm1oK2R_393Ne6aG27QCv0qzYepcNfHy7yYk-fsGSJSAS_wwjSMPGR-egvlSLAHXakudEgve8FeC1L5WqDQgTrPgZQ_x9_LRfgp" />
+          <div class="hidden lg:flex flex-col text-left">
+            <span class="font-label-md text-label-md text-on-surface leading-snug">Eleanor Vance</span>
+            <span class="font-label-sm text-label-sm text-on-surface-variant leading-none">Archivist Dimsum</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="w-full bg-surface min-h-[calc(100vh-14rem)]">
+    <div class="flex flex-col w-full">
+
+      <!-- Interactive Countdown & Editorial Hero -->
+      <section class="relative overflow-hidden px-6 lg:px-12 py-space-xl lg:py-space-2xl bg-surface">
+        <div class="absolute -top-32 -left-20 w-96 h-96 rounded-full bg-primary-fixed/25 blur-3xl pointer-events-none">
+        </div>
+        <div
+          class="absolute top-1/2 -right-32 w-80 h-80 rounded-full bg-secondary-fixed/30 blur-3xl pointer-events-none">
+        </div>
+
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+          <!-- Left Column: Editorial Copy -->
+          <div class="lg:col-span-7 flex flex-col items-start space-y-6">
+            <div
+              class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-surface-container-high text-primary shadow-sm">
+              <span class="material-symbols-outlined text-[18px]">lock_clock</span>
+              <span class="font-label-sm text-label-sm tracking-widest uppercase">Segel Digital Kriptografis • Kapsul
+                Dimsum Abadi</span>
+            </div>
+
+            <h1 class="font-display-lg text-display-lg text-on-surface leading-tight tracking-tight">
+              Menyimpan Rasa &amp; Kata untuk Hari yang Belum Tiba.
+            </h1>
+
+            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
+              Kirim surat rahasia, rekaman audio autentik, dan potret kenangan yang terkunci rapat dalam kehangatan
+              kapsul dimsum secara kriptografis hingga detik yang Anda tentukan di masa depan.
+            </p>
+
+            <!-- CTA Buttons (Non-interactive display) -->
+            <div class="pt-2 flex flex-wrap items-center gap-4 w-full sm:w-auto">
+              <button
+                class="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded bg-primary text-on-primary font-label-md text-label-md shadow-md"
+                type="button" disabled>
+                <span class="material-symbols-outlined text-[20px]">edit_note</span>
+                <span>Mulai Menulis Kapsul Dimsum</span>
+              </button>
+              <button
+                class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded bg-surface-container-low text-on-surface font-label-md text-label-md"
+                type="button" disabled>
+                <span class="material-symbols-outlined text-[20px] text-primary">hourglass_empty</span>
+                <span>Jelajahi Cara Kerja Segel Waktu</span>
+              </button>
+            </div>
+
+            <!-- Archival Ledger Micro-Stat -->
+            <div class="pt-6 flex items-center gap-8 w-full max-w-lg">
+              <div class="flex flex-col">
+                <span class="font-headline-sm text-headline-sm text-on-surface">42,891</span>
+                <span class="font-body-sm text-body-sm text-on-surface-variant">Kapsul Dimsum Tersegel</span>
+              </div>
+              <div class="h-8 w-px bg-surface-variant"></div>
+              <div class="flex flex-col">
+                <span class="font-headline-sm text-headline-sm text-on-surface">12 Tahun</span>
+                <span class="font-body-sm text-body-sm text-on-surface-variant">Protokol Retensi Maksimal</span>
+              </div>
+              <div class="h-8 w-px bg-surface-variant"></div>
+              <div class="flex flex-col">
+                <span class="font-headline-sm text-headline-sm text-tertiary">0% Bobol</span>
+                <span class="font-body-sm text-body-sm text-on-surface-variant">Integritas Kripto</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Visual Artifact Capsule & Countdown Card -->
+          <div class="lg:col-span-5 relative">
+            <div class="relative bg-surface-container-lowest rounded-xl shadow-xl p-6 sm:p-8 overflow-hidden">
+              <div
+                class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary via-secondary to-primary-container">
+              </div>
+
+              <div class="flex items-center justify-between pb-6">
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
+                  <span class="font-label-sm text-label-sm text-on-surface-variant tracking-wider uppercase">Arsip
+                    Tersegel #CS-2024-884</span>
+                </div>
+                <span
+                  class="font-body-sm text-body-sm px-2.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-medium">Privat
+                  &amp; Terenkripsi</span>
+              </div>
+
+              <!-- Wax Seal Graphic & Recipient Badge -->
+              <div class="relative rounded-lg overflow-hidden mb-6 bg-surface-container">
+                <img class="w-full h-56 object-cover object-center" data-alt="Vintage terracotta wax seal"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAP8kqZqnY2CCZcTUwEort4o1k5K_MbwVGM7T8zJdnsON5ltYJZWnXY82bEp2WgMlBFzPRhVzptMnmKrmlIlvUfieXEQGsDozqtIaimXoNwFIi9NIZuBz06RkGzRSt8sjSK0Icc1n35IwO3LJ9A5fxI4v3pm3fye8j0wOCZ2in_LkIK1QSX31OZcrYQFVSvwy9y-Jr5_OxtQ4pwiPvYDvrmelkUcJfnlKWTqK63f95e6GQWfsB0QwXl" />
+                <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-transparent">
+                </div>
+                <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between text-on-primary">
+                  <div>
+                    <p class="font-label-sm text-label-sm uppercase tracking-widest text-primary-fixed">Ditujukan Kepada
+                    </p>
+                    <p class="font-headline-sm text-headline-sm leading-tight text-surface-bright">Eleanor Vance (Usia
+                      35)</p>
+                  </div>
+                  <div class="w-10 h-10 rounded-full bg-primary/90 flex items-center justify-center shadow-lg">
+                    <span class="material-symbols-outlined text-surface text-[22px]">history_edu</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Countdown Dial Slots -->
+              <div class="bg-surface-container-low rounded-lg p-4 mb-5 shadow-sm">
+                <div class="flex items-center justify-between mb-3">
+                  <span
+                    class="font-label-sm text-label-sm text-primary uppercase tracking-wider flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[16px]">lock</span>
+                    Terkunci hingga 29 September 2029
+                  </span>
+                  <span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">1.095 Hari Lagi</span>
+                </div>
+
+                <div class="grid grid-cols-4 gap-2 text-center">
+                  <div class="bg-surface-container-lowest rounded p-2 shadow-inner">
+                    <span class="font-headline-md text-headline-md text-on-surface block font-mono">1095</span>
+                    <span class="font-label-sm text-label-sm text-on-surface-variant text-[10px] uppercase">Hari</span>
+                  </div>
+                  <div class="bg-surface-container-lowest rounded p-2 shadow-inner">
+                    <span class="font-headline-md text-headline-md text-on-surface block font-mono">14</span>
+                    <span class="font-label-sm text-label-sm text-on-surface-variant text-[10px] uppercase">Jam</span>
+                  </div>
+                  <div class="bg-surface-container-lowest rounded p-2 shadow-inner">
+                    <span class="font-headline-md text-headline-md text-on-surface block font-mono">38</span>
+                    <span class="font-label-sm text-label-sm text-on-surface-variant text-[10px] uppercase">Menit</span>
+                  </div>
+                  <div class="bg-surface-container-lowest rounded p-2 shadow-inner">
+                    <span class="font-headline-md text-headline-md text-primary block font-mono">42</span>
+                    <span class="font-label-sm text-label-sm text-on-surface-variant text-[10px] uppercase">Detik</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Payload Summary Footer -->
+              <div class="flex items-center justify-between pt-2 text-on-surface-variant font-body-sm text-body-sm">
+                <span class="flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-[18px] text-tertiary">mic</span> 1 Pesan Suara (04:12)
+                </span>
+                <span class="flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-[18px] text-secondary">photo_library</span> 6 Foto Arsip
+                </span>
+                <span class="flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-[18px] text-primary">description</span> 1.840 Kata
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Section 1: Empat Dimensi Kapsul Dimsum -->
+      <section class="w-full bg-surface-container-low px-6 lg:px-12 py-space-2xl">
+        <div class="max-w-7xl mx-auto flex flex-col space-y-12">
+
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 max-w-4xl">
+            <div>
+              <p class="font-label-sm text-label-sm text-primary uppercase tracking-widest mb-2">Bentuk-Bentuk
+                Preservasi</p>
+              <h2 class="font-headline-lg text-headline-lg text-on-surface leading-snug">
+                Empat Dimensi Kapsul Dimsum untuk Mengarungi Waktu
+              </h2>
+            </div>
+            <p class="font-body-md text-body-md text-on-surface-variant md:max-w-md">
+              Setiap perjumpaan dengan masa depan menuntut wadah yang berbeda. Rancang dan atur takdir kapsul dimsum
+              sesuai ikatan yang Anda rawat.
+            </p>
+          </div>
+
+          <!-- Bento Cards Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <!-- Card 1 -->
+            <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm flex flex-col justify-between">
+              <div class="space-y-4">
+                <div class="w-12 h-12 rounded-lg bg-primary-fixed flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined text-[26px]">person_pin_circle</span>
+                </div>
+                <div
+                  class="inline-block px-2.5 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
+                  5 Tahun Kedepan
+                </div>
+                <h3 class="font-headline-md text-headline-md text-on-surface">Surat untuk Diri Masa Depan</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                  Refleksi jujur atas kegelisahan hari ini, rekaman mimpi yang ingin dicapai, dan peta kompas moral
+                  sebelum waktu mengubah Anda.
+                </p>
+              </div>
+              <div class="pt-8 flex items-center justify-between text-primary font-label-md text-label-md">
+                <span>Rancang Refleksi</span>
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm flex flex-col justify-between">
+              <div class="space-y-4">
+                <div class="w-12 h-12 rounded-lg bg-secondary-fixed flex items-center justify-center text-secondary">
+                  <span class="material-symbols-outlined text-[26px]">favorite</span>
+                </div>
+                <div
+                  class="inline-block px-2.5 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
+                  Ulang Tahun Ke-10
+                </div>
+                <h3 class="font-headline-md text-headline-md text-on-surface">Waris Kenangan &amp; Pernikahan</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                  Kisah janji suci saat awal pernikahan, rekaman tawa pertama di rumah sederhana, dan pesan cinta yang
+                  terkunci untuk satu dekade ke depan.
+                </p>
+              </div>
+              <div class="pt-8 flex items-center justify-between text-secondary font-label-md text-label-md">
+                <span>Simpan Janji</span>
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm flex flex-col justify-between">
+              <div class="space-y-4">
+                <div class="w-12 h-12 rounded-lg bg-tertiary-fixed flex items-center justify-center text-tertiary">
+                  <span class="material-symbols-outlined text-[26px]">groups_3</span>
+                </div>
+                <div
+                  class="inline-block px-2.5 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
+                  Reuni &amp; Wisuda
+                </div>
+                <h3 class="font-headline-md text-headline-md text-on-surface">Kapsul Dimsum Lingkar Sahabat</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                  Wadah multi-kontributor. Ajak sahabat mengumpulkan lelucon lokal, rekaman suara rahasia, dan foto
+                  konyol yang baru akan terbuka bersama.
+                </p>
+              </div>
+              <div class="pt-8 flex items-center justify-between text-tertiary font-label-md text-label-md">
+                <span>Buat Arsip Bersama</span>
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm flex flex-col justify-between">
+              <div class="space-y-4">
+                <div
+                  class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center text-on-surface">
+                  <span class="material-symbols-outlined text-[26px]">celebration</span>
+                </div>
+                <div
+                  class="inline-block px-2.5 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
+                  Pencapaian Besar
+                </div>
+                <h3 class="font-headline-md text-headline-md text-on-surface">Kotak Dimsum Waktu Kejutan</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                  Surat dorongan moral saat Anda meniti karier atau membangun usaha. Disiapkan oleh mentor, orang tua,
+                  atau diri Anda saat lelah.
+                </p>
+              </div>
+              <div class="pt-8 flex items-center justify-between text-on-surface font-label-md text-label-md">
+                <span>Siapkan Kejutan</span>
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Jaminan Kunci Waktu Tanpa Kompromi -->
+      <section class="w-full bg-surface px-6 lg:px-12 py-space-2xl relative">
+        <div class="max-w-7xl mx-auto">
+          <div class="bg-surface-container-high rounded-xl p-8 lg:p-14 shadow-lg relative overflow-hidden">
+            <div class="max-w-3xl mb-12">
+              <div
+                class="inline-flex items-center gap-2 text-primary font-label-sm text-label-sm uppercase tracking-widest mb-3">
+                <span class="material-symbols-outlined text-[18px]">verified_user</span>
+                <span>Standar Integritas Arsip Dimsum</span>
+              </div>
+              <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">
+                Jaminan Kunci Waktu Tanpa Kompromi
+              </h2>
+              <p class="font-body-lg text-body-lg text-on-surface-variant">
+                Kepercayaan adalah inti dari kapsul dimsum digital. Kami merancang arsitektur segel yang mustahil
+                ditembus oleh pihak mana pun—bahkan oleh tim pengembang kami sendiri.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div class="bg-surface-container-lowest rounded-lg p-6 shadow-sm flex flex-col justify-between">
+                <div>
+                  <div class="w-12 h-12 rounded bg-tertiary/10 text-tertiary flex items-center justify-center mb-5">
+                    <span class="material-symbols-outlined text-[28px]">schedule</span>
+                  </div>
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Jam Server Terdesentralisasi</h3>
+                  <p class="font-body-md text-body-md text-on-surface-variant">
+                    Anti-manipulasi jam perangkat lokal. Memanfaatkan jaringan NTP multi-zona independen yang
+                    mensinkronkan segel waktu tanpa celah percepatan artifisial.
+                  </p>
+                </div>
+                <div class="mt-6 pt-4 flex items-center gap-2 text-tertiary font-label-sm text-label-sm">
+                  <span class="material-symbols-outlined text-[16px]">check_circle</span>
+                  <span>Kalibrasi Atom Presisi</span>
+                </div>
+              </div>
+
+              <div class="bg-surface-container-lowest rounded-lg p-6 shadow-sm flex flex-col justify-between">
+                <div>
+                  <div class="w-12 h-12 rounded bg-primary/10 text-primary flex items-center justify-center mb-5">
+                    <span class="material-symbols-outlined text-[28px]">enhanced_encryption</span>
+                  </div>
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Enkripsi Payloads AES-256</h3>
+                  <p class="font-body-md text-body-md text-on-surface-variant">
+                    Setiap paragraf, foto, dan rekaman audio dienkripsi pada sisi peramban klien. Kunci dekripsi baru
+                    dirilis secara bertahap saat stempel tanggal valid.
+                  </p>
+                </div>
+                <div class="mt-6 pt-4 flex items-center gap-2 text-primary font-label-sm text-label-sm">
+                  <span class="material-symbols-outlined text-[16px]">check_circle</span>
+                  <span>Zero-Knowledge Proof</span>
+                </div>
+              </div>
+
+              <div class="bg-surface-container-lowest rounded-lg p-6 shadow-sm flex flex-col justify-between">
+                <div>
+                  <div class="w-12 h-12 rounded bg-secondary/10 text-secondary flex items-center justify-center mb-5">
+                    <span class="material-symbols-outlined text-[28px]">cloud_sync</span>
+                  </div>
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Brankas Media Privat Otomatis</h3>
+                  <p class="font-body-md text-body-md text-on-surface-variant">
+                    Penyimpanan multi-region dingin dengan signed URL sementara yang hanya dihasilkan otomatis kepada
+                    penerima sah saat hari pembukaan kapsul dimsum.
+                  </p>
+                </div>
+                <div class="mt-6 pt-4 flex items-center gap-2 text-secondary font-label-sm text-label-sm">
+                  <span class="material-symbols-outlined text-[16px]">check_circle</span>
+                  <span>Replikasi 3 Wilayah Benua</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Call to Action Penutup (Static Form) -->
+      <section class="w-full bg-surface px-6 lg:px-12 py-space-2xl">
+        <div
+          class="max-w-5xl mx-auto bg-gradient-to-br from-surface-container-high via-surface-container-lowest to-surface-container-low rounded-xl p-8 sm:p-12 lg:p-16 shadow-xl relative overflow-hidden">
+          <div class="relative z-10 max-w-2xl">
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm uppercase tracking-wider mb-4">
+              <span class="material-symbols-outlined text-[16px]">lock</span>
+              <span>Mulai Hari Ini</span>
+            </div>
+            <h2 class="font-display-lg text-headline-lg text-on-surface leading-tight mb-4">
+              Tulis Surat Pertama Anda. Kunci Hari Ini, Temui Kelak.
+            </h2>
+            <p class="font-body-lg text-body-lg text-on-surface-variant mb-8">
+              Jangan biarkan renungan berharga hari ini menguap tertelan kesibukan. Simpan dalam kapsul dimsum pertama
+              Anda secara gratis dan dapatkan sertifikat segel kriptografis.
+            </p>
+
+            <form class="flex flex-col sm:flex-row gap-3 w-full" onsubmit="return false;">
+              <input
+                class="w-full px-4 py-3.5 bg-surface-container-lowest text-on-surface rounded shadow-sm font-body-md text-body-md"
+                placeholder="Masukkan alamat surat elektronik Anda..." type="email" disabled />
+              <button
+                class="px-8 py-3.5 rounded bg-primary text-on-primary font-label-md text-label-md shadow-md flex items-center justify-center gap-2 whitespace-nowrap"
+                type="button" disabled>
+                <span>Segel Kapsul Dimsum Pertama</span>
+                <span class="material-symbols-outlined text-[18px]">verified</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Archival Footer -->
+  <footer class="w-full bg-surface-container-low mt-space-2xl border-t border-outline-variant/30">
+    <div
+      class="max-w-7xl mx-auto px-6 lg:px-12 py-space-xl flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex flex-col items-center md:items-start gap-1">
+        <div class="flex items-center gap-2 text-primary">
+          <span class="material-symbols-outlined text-[18px]">verified_user</span>
+          <span class="font-label-sm text-label-sm tracking-wide">Kerahasiaan Terenkripsi &amp; Segel Waktu
+            Terjamin</span>
+        </div>
+        <p class="font-body-sm text-body-sm text-on-surface-variant text-center md:text-left">
+          © 2024 Chronicle &amp; Seal. Menjaga surat dan warisan kapsul dimsum untuk masa depan.
+        </p>
+      </div>
+      <div class="flex items-center gap-6 font-label-sm text-label-sm text-on-surface-variant">
+        <span>Protokol Kapsul Dimsum</span>
+        <span>Privasi Arsip</span>
+        <span>Bantuan &amp; FAQ</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
